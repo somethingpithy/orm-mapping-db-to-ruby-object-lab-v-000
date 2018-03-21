@@ -75,11 +75,11 @@ class Student
       SELECT name
       FROM students
       WHERE grade
-      BETWEEN 9 AND 11
+      BETWEEN ? AND ?
 
     SQL
 
-    DB[:conn].execute(sql)
+    DB[:conn].execute(sql, 9, 11)
   end
 
   def self.first_X_students_in_grade_10(x_students)
