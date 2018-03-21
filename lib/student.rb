@@ -64,7 +64,6 @@ class Student
       SELECT COUNT(grade)
       FROM students
       WHERE grade = 9
-
     SQL
 
     DB[:conn].execute(sql)
@@ -75,7 +74,6 @@ class Student
       SELECT name
       FROM students
       WHERE grade < 12
-
     SQL
 
     DB[:conn].execute(sql)
@@ -87,14 +85,15 @@ class Student
       FROM students
       WHERE grade = 10
       LIMIT = ?
-
     SQL
 
-    DB[:conn].execute(sql, x_students)
+    DB[:conn].execute(sql, x_students).map do |row|
+      self.new_from_db
+    end
   end
 
-  def self.first_student_in_grade_10(grade_x)
-
+  def self.first_student_in_grade_10
+    
   end
 
   def self.all_students_in_grade_X
