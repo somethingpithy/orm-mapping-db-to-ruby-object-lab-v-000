@@ -84,6 +84,7 @@ class Student
       SELECT name
       FROM students
       WHERE grade = 10
+      ORDERBY students.id
       LIMIT = ?
     SQL
 
