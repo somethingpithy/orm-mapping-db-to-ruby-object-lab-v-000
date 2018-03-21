@@ -61,15 +61,13 @@ class Student
 
   def self.count_all_students_in_grade_9
     sql = <<-SQL
-      SELECT *
+      SELECT COUNT(grade)
       FROM students
       WHERE grade = ?
-      
+
     SQL
 
-    DB[:conn].execute(sql).map do |row|
-      self.new_from_db(row)
-    end
+    DB[:conn].execute(sql, 9)
   end
 
   def self.students_below_12th_grade
@@ -77,7 +75,7 @@ class Student
   end
 
   def self.first_X_students_in_grade_10(x_students)
-    
+
   end
 
   def self.first_student_in_grade_10(grade_x)
@@ -87,5 +85,5 @@ class Student
   def self.all_students_in_grade_X
 
   end
-  
+
 end
